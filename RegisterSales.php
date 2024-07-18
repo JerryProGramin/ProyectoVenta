@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 class RegisterSales {
     private array $Sales = [];
@@ -29,11 +30,23 @@ class RegisterSales {
     public function CalTotSales(): float
     {
         $Total = 0;
-        foreach ($this->Sales as $Sale) {
+        foreach ($this->Sales as $Sale) 
+        {
             $Total += $Sale->CalculateTotal();
         }
         return $Total;
     }
+
+    public function ViewTotalQuantity(): int
+    {
+        $TotalQuantity = 0;
+        foreach ($this->Sales as $Sale) 
+        {
+            $TotalQuantity += $Sale->getQuantity();
+        }
+        return $TotalQuantity;
+    }
+
 }
 
 ?>

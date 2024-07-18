@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 class Inventory 
 {
     private array $Products = [];
@@ -33,11 +35,19 @@ class Inventory
     public function ViewProduct(int $Id): ?Product 
     {
         if (!isset($this->Products[$Id])) {
-            Echo("Producto no encontrado");
+            echo("Producto no encontrado");
+            return null;
         }
         return $this->Products[$Id];
     }
     */
+
+    public function updateStock(int $ProductId, int $QuantitySold): void
+    {
+        if (isset($this->Products[$ProductId])) {
+            $this->Products[$ProductId]->AmountStock($QuantitySold);
+        }
+    }
 }
 
 

@@ -58,6 +58,13 @@ class Product
         $this ->Stock = $Stock;
     }
 
+    public function AmountStock(int $quantity): void
+    {
+        if ($this->Stock < $quantity) {
+            throw new InvalidArgumentException("Productos insuficientes");
+        }
+        $this->Stock -= $quantity;
+    }
 }
 
 ?>
